@@ -1,3 +1,10 @@
-# Contributing to Pageres
+it('captures a car screenshot', async () => {
+  const pageres = new Pageres();
+  const url = 'https://example.com/car';
+  const options = { timeout: 30, crop: true };
 
-Please note that this project is released with a [Contributor Code of Conduct](code-of-conduct.md). By participating in this project you agree to abide by its terms.
+  await pageres.captureCarScreenshot(url, options);
+
+  expect(pageres.#items.length).toBe(1);
+  expect(pageres.#items[0].filename).toBe('car-screenshot.png');
+});
